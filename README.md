@@ -47,7 +47,6 @@ The project consists of the following main components:
    ```
 
 
-
 2. Launch the program:
 
    ```bash
@@ -68,6 +67,37 @@ The project consists of the following main components:
     3. Re-cluster data with a different dataset
     4. Convert a SMILE to a 2D structure and display it
     5. Get the name of a chemical from a SMILE  
+   ```
+
+4. Getting Similar Chemicals
+   ```console
+   Enter a smile: CCC(CC1=CNC2=CC=CC=C21)N
+
+   Alpha-methyltryptamine       CC(CC1=CNC2=CC=CC=C21)N
+   Alpha-ethyltryptamine        CCC(CC1=CNC2=CC=CC=C21)N
+   Alpha,N-DMT                  CC(CC1=CNC2=CC=CC=C21)NC
+   5-MeO-AMT                    CC(CC1=CNC2=C1C=C(C=C2)OC)N
+   Alpha,N,O-TMS                CC(CC1=CNC2=C1C=C(C=C2)OC)NC
+   5-Fluoro-AMT                 CC(CC1=CNC2=C1C=C(C=C2)F)N
+   6-fluoro-AMT                 CC(CC1=CNC2=C1C=CC(=C2)F)N
+   MethylbenzodioxolylbutanamineCCCC(C)(C1C2=CC=CC=C2OO1)N
+   Benzodioxolylbutanamine      CCCC(C1C2=CC=CC=C2OO1)N
+   Naphthylaminopropane         CC(CC1=CC2=CC=CC=C2C=C1)N
+
+   ```
+5. Converting a SMILE to a 2D structure and display it.
+   ```console
+   Enter a smile: CCC(CC1=CNC2=CC=CC=C21)  
+   ```
+   Displayed Image (The file name of the image is the name of the Chemical)
+
+   ![Alt Text](data\2D-Structures\3-butyl-1H-indole.png)
+
+6. Getting the name of a chemical from a SMILE
+    ```console
+   Enter a smile: CCC(CC1=CNC2=CC=CC=C21)  
+   The SMILE corresponds to the chemical -> 3-butyl-1H-indole
+
    ```
 
 ## Contribution
