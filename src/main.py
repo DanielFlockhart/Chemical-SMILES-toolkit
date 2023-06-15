@@ -1,6 +1,8 @@
 from clustering import cluster as cl
 from clustering import evaluation as ev
 from clustering import dataset as ds
+
+from visualisation import structure_builder as sb
 from utils import *
 import os
 '''
@@ -9,6 +11,8 @@ Current Functionality:
     - Allows user to use a list of names of drugs from a text file to create a list of smiles and store them in a text file
     - Allows user to cluster the smiles and store the clustered data in a text file
     - Allows user to input a smile and get a list of similar smiles and their names
+    - Allows user to input a smile and get a 2D structure of the chemical
+    - Allows user to input a smile and get the name of the chemical
 
 Functionality to add:
 
@@ -100,6 +104,28 @@ def get_related_chemicals():
         # Print the names red and the smiles green
         print(f"\033[91m{item[0]}\033[00m{gap} \033[92m{item[1]}\033[00m")
 
+        
+def smile_to_2D_structure():
+    """
+    Converts a smile to a 2D structure and displays it
+    """
+
+    # Get the smile from the user
+    smile = input("Enter a smile: ")
+
+    chem = sb.Structure(smile)
+    chem.save_structure()
+    chem.display_structure()
+
+def get_name_from_smile():
+    """
+    Gets the name of a chemical from a smile
+    """
+
+    # Get the smile from the user
+    smile = input("Enter a smile: ")
+    chem = sb.Structure(smile)
+    print("The SMILE corresponds to the chemical -> " + chem.get_name())
 
 
 def main():
@@ -112,12 +138,15 @@ def main():
     1. Get similar SMILE to a given SMILE with current clusters
     2. Re-cluster data with a different number of clusters
     3. Re-cluster data with a different dataset
+    4. Convert a SMILE to a 2D structure and display it
+    5. Get the name of a chemical from a SMILE
+
     ''')
-    choices = 3
+    choices = 5
     choice = -1
     while choice < 1:
         try:
-            choice = int(input(f"Selection (1,2,3): "))
+            choice = int(input(f"Selection : "))
             if choice > choices or choice < 1:
                 print("Please Select a number from the list above")
                 choice = -1
@@ -132,6 +161,10 @@ def main():
         cluster()
     elif choice == 3:
         cluster_different_dataset()  
+    elif choice == 4:
+        smile_to_2D_structure()
+    elif choice == 5:
+        get_name_from_smile()
 
 
 
@@ -140,4 +173,3 @@ if __name__ == "__main__":
         main()
         if not confirmation():
             break
-    

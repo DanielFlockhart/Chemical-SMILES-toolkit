@@ -1,6 +1,6 @@
 # Chemical Compound Clustering
 
-This Python project aims to cluster chemical compounds based on their SMILES (Simplified Molecular Input Line Entry System) representation. It provides a user-friendly interface to input a SMILES string and obtain a cluster of similar chemicals along with their respective SMILES.
+This Python project aims to cluster chemical compounds based on their SMILES (Simplified Molecular Input Line Entry System) representation and provides a user-friendly interface to input a SMILES string and obtain a cluster of similar chemicals along with their respective SMILES.
 
 There is no requirement to cluster the default data on first use, it has already been clustered using 100 clusters.
 
