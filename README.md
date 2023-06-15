@@ -37,23 +37,21 @@ The project consists of the following main components:
    ```
 
 ## Usage
-1. In the case you want to use your own dataset please upload your txt of chemical names in the form. If you only wish to test the software, please skip to step 4.
-   
+4. In the case you want to use your own dataset please upload your txt of chemical names in this form. If you only wish to test the software, please skip to step 
+ 
    drugs.txt
    ```
-   chemical_name_1
-   chemical_name_2
-   ...
+   ["name1","name2","name3"...]
    ```
 
 
-2. Launch the program:
+5. Launch the program:
 
    ```bash
    python main.py
 
    ```
-3. Follow Instructions
+6. Follow Instructions
 
    ```console
    ---------- Welcome chemical SMILES toolkit ----------
@@ -69,7 +67,7 @@ The project consists of the following main components:
     5. Get the name of a chemical from a SMILE  
    ```
 
-4. Getting Similar Chemicals
+7. Getting Similar Chemicals
    ```console
    Enter a smile: CCC(CC1=CNC2=CC=CC=C21)N
 
@@ -85,7 +83,7 @@ The project consists of the following main components:
    Naphthylaminopropane         CC(CC1=CC2=CC=CC=C2C=C1)N
 
    ```
-5. Converting a SMILE to a 2D structure and display it.
+8. Converting a SMILE to a 2D structure and display it.
    ```console
    Enter a smile: CCC(CC1=CNC2=CC=CC=C21)  
    ```
@@ -93,7 +91,7 @@ The project consists of the following main components:
 
    ![Alt Text](data\2D-Structures\3-butyl-1H-indole.png)
 
-6. Getting the name of a chemical from a SMILE
+9. Getting the name of a chemical from a SMILE
     ```console
    Enter a smile: CCC(CC1=CNC2=CC=CC=C21)  
    The SMILE corresponds to the chemical -> 3-butyl-1H-indole
