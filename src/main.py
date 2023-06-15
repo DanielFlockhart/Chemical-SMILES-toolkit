@@ -1,41 +1,94 @@
 from clustering import cluster as cl
 from clustering import evaluation as ev
 from clustering import dataset as ds
-
-
+from utils import *
+import os
 '''
-User inputs a smile and the program will return a cluster of similar smiles and their names
 
 Current Functionality:
+    - Allows user to use a list of names of drugs from a text file to create a list of smiles and store them in a text file
+    - Allows user to cluster the smiles and store the clustered data in a text file
+    - Allows user to input a smile and get a list of similar smiles and their names
 
 Functionality to add:
 
 '''
 
-
-# Get data
-# cluster
-# evaluate
-# get Cluster
-
-
-
-
-def evaluate_cluster_counts(min_clusters,max_clusters):
-    pass
-
-def cluster(n_clusters):
-    cl.cluster(n_clusters)
-
-
-def main(folder):
+def cluster_different_dataset():
+    '''
+    Re-Cluster the data using a different dataset user has provided in drugs.txt
     
+    '''
+    linebreak()
+    print('''
+    Please note that this will overwrite the current clustered data.
+
+    Please make sure that the data file is in the format of a list of names of drugs seperated by new lines and is in \Chemical-SMILES-toolkit\data\drugs.txt.
+    Example of drugs.txt:
+    drug1
+    drug2
+    drug3
+    ...
+
+    
+    ''')
+    # Ask user for confirmation
+    if confirmation():
+        linebreak()
+    else:
+        return
+    print("Loading new dataset into smiles.txt, this may take some time depending on how many drugs are in the dataset")
+    
+    # Loads new dataset
+    dataset = ds.Dataset()
+
+    # Get the smiles for each chemical from database
+    dataset.get_smiles()
+
+    # Remove duplicates
+    #dataset.clean_data()
+
+    # Store the smiles with their corresponding name in a text file
+    dataset.store_smiles()
+    print("New Data stored in smiles.txt")
+
+    # Cluster the data
+    cluster()
+
+def cluster():
+    '''
+    Uses Agglomerative Clustering with Complete Linkage to cluster the data
+    Distance matrix is calculated using the Levenshtein distance
+
+    '''
+    linebreak()
+
+    # Get the number of clusters from the user
+    n_clusters = get_cluster_input()
+
+    new_cluster = cl.Cluster(n_clusters)
+    new_cluster.cluster()
+
+
+def get_related_chemicals():
+    """
+    Get the similar smiles to a given smile
+    """
+    linebreak()
+    
+    print('''
+    By Default the program will use the clustered data from the Github repository of Pychoactive substances as mentioned Previously
+    ''')
     # Get the smile from the user
     smile = input("Enter a smile: ")
+
+    cluster = cl.Cluster()
+    
+
     # Get the similar smiles
-    similar_smiles = cl.get_similar_smiles(smile,folder)
-    # Print the similar smiles
-    # print(similar_smiles)
+    similar_smiles = cluster.get_similar_smiles(smile)
+    
+
     # Get the longest name out of the array of similar smiles names
     longest_name = max([len(item[0]) for item in similar_smiles])
 
@@ -46,9 +99,45 @@ def main(folder):
 
         # Print the names red and the smiles green
         print(f"\033[91m{item[0]}\033[00m{gap} \033[92m{item[1]}\033[00m")
-        
-        
 
-test_smile = "CCN(CC)C(=O)C1CN(C2CC3=C(NC4=CC=CC(=C34)C2=C1)Br)C"
+
+
+def main():
+    print(("-"*10)+" Welcome chemical SMILES toolkit "+("-"*10))
+    print('''
+    The Github repository comes with a pre-clustered dataset of 1411 Psychoactive Substances with 100 clusters as an example.
+    Feel free to use this dataset or cluster your own dataset.
+    Please choose from the follow options to continue:
+    
+    1. Get similar SMILE to a given SMILE with current clusters
+    2. Re-cluster data with a different number of clusters
+    3. Re-cluster data with a different dataset
+    ''')
+    choices = 3
+    choice = -1
+    while choice < 1:
+        try:
+            choice = int(input(f"Selection (1,2,3): "))
+            if choice > choices or choice < 1:
+                print("Please Select a number from the list above")
+                choice = -1
+        except:
+            choice = -1
+            print("Input not recognised, please try again.")
+
+
+    if choice == 1:
+        get_related_chemicals()
+    elif choice == 2:
+        cluster()
+    elif choice == 3:
+        cluster_different_dataset()  
+
+
+
 if __name__ == "__main__":
-    main(r"C:\Users\0xdan\Documents\CS\Catergories\Healthcare_Medical\Drug Discovery\DrugInteractions\data")
+    while True:
+        main()
+        if not confirmation():
+            break
+    
