@@ -1,10 +1,12 @@
 from rdkit import Chem
+from rdkit.Chem import AllChem
 from rdkit.Chem import Draw
 from PIL import Image
 
 import pubchempy as pcp
 import os
 import sys
+import io
 sys.path.insert(0, os.path.abspath('..'))
 from utils import *
 
@@ -17,6 +19,7 @@ class Structure:
         self.name = self.get_name()
         self.data_folder = os.path.join(get_directory(),"data")
         self.structures = os.path.join(self.data_folder,"2D-Structures")
+        self.structure_3D = os.path.join(self.data_folder,"3D-Structures")
         
     
     def build_structure(self):
@@ -50,3 +53,29 @@ class Structure:
         """
         img = Image.open(self.structures+fr"\{self.name}.png")
         img.show()
+
+    def to_3D_structure(self):
+        """
+        Converts the 2D structure to a 3D structure using the rdkit library
+        """
+
+        raise NotImplementedError("This function is not yet implemented")
+        # mol = Chem.AddHs(self.molecule)
+        # Chem.AllChem.EmbedMolecule(mol)
+        # # Create a 2D image of the 3D structure
+        # drawer = Draw.rdMolDraw2D.MolDraw2DCairo(400, 400)  # Adjust the image size as needed
+        # drawer.DrawMolecule(mol)
+        # drawer.FinishDrawing()
+
+        # # Get the image as a PIL object
+        # image_data = drawer.GetDrawingText()
+        # image = Image.open(io.BytesIO(image_data))
+
+        # # Display or save the image
+        # image.show()
+    
+if __name__ == "__main__":
+    b= Structure("CC(=O)Oc1ccccc1C(=O)O")
+    b.save_structure()
+    b.display_structure()
+    b.to_3D_structure()

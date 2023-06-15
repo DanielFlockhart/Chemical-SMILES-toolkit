@@ -10,7 +10,7 @@ def levenshtein_distance(token1, token2):
     """
     Levenshtein distance is a metric used to quantify the difference or similarity between two strings.
     It measures the minimum number of single-character edits (insertions, deletions, or substitutions) required to transform one string into another.
-
+    Similar to and Tanimoto coefficient,Dice coefficient.
     """
     distances = np.zeros((len(token1) + 1, len(token2) + 1))
 
