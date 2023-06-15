@@ -173,6 +173,3 @@ if __name__ == "__main__":
         main()
         if not confirmation():
             break
-
-
-# Issues, at some point during processing some chemicals are duplicated
