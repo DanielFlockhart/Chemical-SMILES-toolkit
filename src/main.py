@@ -102,7 +102,7 @@ def get_related_chemicals():
         gap = (longest_name - len(item[0])) * " "
 
         # Print the names red and the smiles green
-        print(f"\033[91m{item[0]}\033[00m{gap} \033[92m{item[1]}\033[00m")
+        print(f"\033[91m{item[0]}\033[00m{gap}{colour_smile(item[1])}")
 
         
 def smile_to_2D_structure():
@@ -173,3 +173,6 @@ if __name__ == "__main__":
         main()
         if not confirmation():
             break
+
+
+# Issues, at some point during processing some chemicals are duplicated

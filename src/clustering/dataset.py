@@ -9,6 +9,7 @@ Naturally, this program can run on any list of names of drugs, but I have provid
 import pubchempy as pcp
 import os
 import sys
+import ast
 sys.path.insert(0, os.path.abspath('..'))
 from utils import *
 
@@ -24,11 +25,12 @@ class Dataset:
         For Each Chemical in the List of Chemicals, Get The Canonical SMILES and Store It In A List
         """
         with open(self.names,"r+",encoding="utf8") as f:
-            for row in f.read().split("\n"):
+            data = ast.literal_eval(f.read())
+            for x in range(len(data)):
                 try:
-                    results = pcp.get_compounds(row, 'name')
+                    results = pcp.get_compounds(data[x], 'name')
                     for res in results:
-                        self.data.append([row,res.canonical_smiles])
+                        self.data.append([data[x],res.canonical_smiles])
                 except Exception as e:
                     print(f"Error {e}")
 

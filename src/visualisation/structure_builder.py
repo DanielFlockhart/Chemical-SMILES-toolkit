@@ -37,9 +37,12 @@ class Structure:
         """
          Gets the name of the chemical from the smile
         """
-        results = pcp.get_compounds(self.smile, 'smiles')
-
-        return results[0].synonyms[0]
+        try:
+            choice = pcp.get_compounds(self.smile, 'smiles')[0].synonyms[0]
+        except:
+            choice = "Unknown"
+        return choice
+        
 
     def display_structure(self):
         """
