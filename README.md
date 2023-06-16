@@ -116,3 +116,10 @@ The project acknowledges the following resources for their contributions:
 - [RDKit](https://www.rdkit.org/) - Converting SMILEs to 2D Structures
 
 Thank you for using the Chemical SMILES toolkit project! We hope it proves to be useful for your chemical analysis and research.
+
+
+Working on:
+
+- Setting Up UI
+   - Creating Pages System
+- Create my own UI Framework built ontop of tkinter

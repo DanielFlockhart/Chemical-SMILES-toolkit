@@ -1,7 +1,7 @@
 from clustering import cluster as cl
 from clustering import evaluation as ev
 from clustering import dataset as ds
-
+from ui.ui import UI
 from visualisation import structure_builder as sb
 from utils import *
 import os
@@ -167,9 +167,30 @@ def main():
         get_name_from_smile()
 
 
+def new_main():
+    options = [["Get Related Chemicals To a Smile",get_related_chemicals],["Cluster Data with a different amount of clusters",cluster],["Cluster new data",cluster_different_dataset],["Convert a Smile to a 2D Structure",smile_to_2D_structure],["Get the chemical name from a smile.",get_name_from_smile]]
+    ui = UI(options)
+    ui.start_program()
+
+
 
 if __name__ == "__main__":
     while True:
+        print(''' 
+        
+        DEVELOPER NOTES: 
+        
+        - I am Currently Working on a GUI for this project using Tkinter.
+        - Currently It is in a very early stage of development and is not fully functional.
+        - To use the work in progress GUI, run the new_main() function instead of the main() function although it is unusable.
+        
+        ''')
         main()
         if not confirmation():
             break
+
+# get_related_chemicals
+# cluster
+# cluster_different_dataset
+# smile_to_2D_structure
+# get_name_from_smile
