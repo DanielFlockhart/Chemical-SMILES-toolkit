@@ -90,7 +90,7 @@ The project consists of the following main components:
    ```
    Displayed Image (The file name of the image is the name of the Chemical)
 
-   ![Alt Text](data\2D-Structures\3-butyl-1H-indole.png)
+   ![Alt Text](data/2D-Structures/3-butyl-1H-indole.png)
 
 9. Getting the name of a chemical from a SMILE
     ```console
