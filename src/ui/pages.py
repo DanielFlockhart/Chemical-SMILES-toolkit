@@ -7,8 +7,14 @@ class Page:
 
     def hide(self):
         for component in self.components:
-            component.hide()
+            try:
+                component.hide()
+            except:
+                pass # If the component has no hide function, ignore it (It may be a tkinter widget)
 
     def show(self):
         for component in self.components:
-            component.build()
+            try:
+                component.build()
+            except:
+                pass # If the component has no build function, ignore it (It may be a tkinter widget)

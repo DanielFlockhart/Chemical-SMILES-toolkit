@@ -2,7 +2,8 @@ import tkinter as tk
 
 
 class Button:
-    def __init__(self,ui, text,command,page):
+    def __init__(self,ui,uiclass, text,page):
+        self.uiclass = uiclass
         self.ui = ui
         self.text = text
         self.page = page
@@ -16,9 +17,8 @@ class Button:
         self.btn.pack_forget()
     
     def pressed(self):
-        print(f"Pressed {self.text}")
-        self.ui.clear_page()
-        self.page.show()
+        self.uiclass.load_page(self.text)
+        
 
 
 class Title:
@@ -46,15 +46,19 @@ class Label:
         self.label.pack_forget()
 
 class Menu:
-    def __init__(self,ui,opts,pages):
+    def __init__(self,uiclass,ui,opts,pages):
+        # Inherit functions from UI
+
+        self.uiclass = uiclass
         self.ui = ui
+    
         self.options = opts
         self.buttons = []
         self.pages = pages
 
     def build(self):
         for i,option in enumerate(self.options):
-            self.buttons.append(Button(self.ui,option[0],option[1],self.pages[i]))
+            self.buttons.append(Button(self.ui,self.uiclass,option[0],self.pages[i]))
             
 
     def hide(self):
@@ -79,3 +83,14 @@ class Icon:
     def hide(self):
         pass
     
+
+class Entry:
+    def __init__(self,ui):
+        self.ui = ui
+
+    def build(self):
+        self.entry = tk.Entry(self.ui)
+        self.entry.pack(pady=10)
+
+    def hide(self):
+        self.entry.pack_forget()
