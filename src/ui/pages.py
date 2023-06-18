@@ -1,12 +1,14 @@
 
 class Page:
-    def __init__(self, id,ui):
+    def __init__(self, id,ui,components):
         self.id = id
         self.ui = ui
-        self.components = []
-
-    def show(self):
-        self.ui.pack(fill="both", expand=True)
+        self.components = components
 
     def hide(self):
-        self.ui.pack_forget()
+        for component in self.components:
+            component.hide()
+
+    def show(self):
+        for component in self.components:
+            component.build()
