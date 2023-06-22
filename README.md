@@ -57,7 +57,7 @@ The project consists of the following main components:
    ```console
    ---------- Welcome chemical SMILES toolkit ----------
 
-    The Github repository comes with a pre-clustered dataset of 1411 Psychoactive Substances with 100 clusters as an example.
+    The Github repository comes with a pre-clustered dataset of 1411 Substances with 100 clusters as an example.
     Feel free to use this dataset or cluster your own dataset.
     Please choose from the follow options to continue:
 
