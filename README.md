@@ -3,7 +3,7 @@ Developer Notes : This Project Is a work in progress, some functionality is WIP 
 
 This Chemical Smiles Toolkit has a variety of features including clustering chemical compounds based on their SMILES (Simplified Molecular Input Line Entry System) representation and provides a user-friendly interface to input a SMILES string and obtain a cluster of similar chemicals along with their respective SMILES. In addition, the user can input a SMILE and recieve a 2D Structure in return.
 
-There is no requirement to cluster the default data on first use, it has already been clustered using 100 clusters.
+There is no requirement to cluster the default data on first use, it has already been clustered using 100 (arbitrary, working on alternative at the moment) clusters.
 
 ## Features
 
